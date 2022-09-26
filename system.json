@@ -1,0 +1,25 @@
+{
+    "name":"op-rpg",
+    "title":"Ordem Paranormal RPG",
+    "description":"Sistema para jogar sessões de RPG de Ordem Paranormal",
+    "authors": [
+        {
+          "name": "ZDB",
+          "flags": {}
+        }
+    ],
+    "version":0.01,
+    "compatibility": {
+        "minimum": "10",
+        "verified": "10",
+        "maximum": "10"
+    },
+    "esmodules":["op-rpg.js"],
+    "styles":["op-rpg.css"],
+    "packs":[],
+    "languages":[],
+    "gridDistance": 1.5,
+    "gridUnits":"m",
+    "primaryTokenAttribute":"wounds",
+    "initiative":"1d20"
+}

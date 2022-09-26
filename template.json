@@ -1,0 +1,17 @@
+{
+    "Actor":{},
+    "Item":{
+        "types":[
+            "Armas",
+            "Acessórios"
+        ],
+        "Armas":{
+            "Tipo de Proficiência":"",
+            "Tipo de ataque":"",
+            "Empunhadura":""
+        },
+        "Acessórios":{
+            "a":""
+        }
+    }
+}
