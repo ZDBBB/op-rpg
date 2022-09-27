@@ -5,8 +5,7 @@ export default class OPItemSheet extends ItemSheet {
 
     getData(){
         const data = super.getData();
-
-        console.log(data);
+        
         data.config = CONFIG.op_rpg;
 
         return data;
