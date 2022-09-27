@@ -1,0 +1,110 @@
+<link rel="stylesheet" href="systems/op-rpg/templates/sheets/Armas/weapon-sheet.css">
+<link rel="stylesheet" href="systems/op-rpg/templates/sheets/tabs.css">
+<script src="systems/op-rpg/templates/sheets/tabs.js" defer></script>
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="header-container">
+        <img class="headerbox1" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <input class="headerbox2" name="name" type="text" value="{{item.name}}"/>
+        <select class="headerbox3" name="system.weaponDamageType" type="text" value="{{item.system.weaponDamageType}}">
+            {{#select item.system.weaponDamageType}}
+            {{#each config.WeaponDamageTypes as |name type|}}
+            <option value="{{type}}">{{name}}</option>
+            {{/each}}
+            {{/select}}
+        </select>
+        <select class="headerbox4" name="system.weaponType" type="text" value="{{item.system.weaponType}}">
+            {{#select item.system.weaponType}}
+            {{#each config.WeaponProficiencyTypes as |name type|}}
+            <option value="{{type}}">{{name}}</option>
+            {{/each}}
+            {{/select}}
+        </select>
+        <select class="headerbox5" name="system.weaponHilt" type="text" value="{{item.system.weaponHilt}}">
+            {{#select item.system.weaponHilt}}
+            {{#each config.WeaponHilt as |name type|}}
+            <option value="{{type}}">{{name}}</option>
+            {{/each}}
+            {{/select}}
+        </select>
+        <select class="headerbox6" name="system.itemCategory" type="text" value="{{item.system.itemCategory}}">
+            {{#select item.system.itemCategory}}
+            {{#each config.ItemCategory as |name type|}}
+            <option value="{{type}}">{{name}}</option>
+            {{/each}}
+            {{/select}}
+        </select>
+        <select class="headerbox7" name="system.itemSpace" type="text" value="{{item.system.itemSpace}}">
+            {{#select item.system.itemSpace}}
+            {{#each config.ItemSpace as |name type|}}
+            <option value="{{type}}">{{name}}</option>
+            {{/each}}
+            {{/select}}
+        </select>
+        <select class="headerbox8" name="system.weaponAgileStrong" type="text" value="{{item.system.weaponAgileStrong}}">
+            {{#select item.system.weaponAgileStrong}}
+            {{#each config.WeaponAgileStrong as |name type|}}
+            <option value="{{type}}">{{name}}</option>
+            {{/each}}
+            {{/select}}
+        </select>
+    </div>
+    <div class="horizontal-divisor"></div>
+    <div class="tabs">
+        <a class="tab-flex-item active" data-tab-target="#details">Detalhes</a>
+        <a class="tab-flex-item" data-tab-target="#ammunition">Munições</a>
+        <a class="tab-flex-item" data-tab-target="#modifications">Modificações</a>
+    </div>
+    <div class="horizontal-divisor"></div>
+        <div class="tab-container active" id="details" data-tab-content>
+            <div class="tab-title">Detalhes</div>
+            <div class="information-container">
+                <div class="infobox1">
+                    <label class="information-label" for="box1">Dano</label>
+                    <input class="infoInput infobox" name="system.weaponDamage" id="box1" value="{{item.system.weaponDamage}}"></div>
+                <div class="infobox2">
+                    <label class="information-label" for="box2">Ameaça</label>
+                    <select class="infobox" name="system.weaponThreat" id="box2" value="{{item.system.weaponThreat}}">
+                        {{#select item.system.weaponThreat}}
+                        {{#each config.WeaponThreat as |name type|}}
+                        <option value="{{type}}">{{name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="infobox3">
+                    <label class="information-label" for="box3">Crítico</label>
+                    <select class="infobox" name="system.weaponCrit" id="box3" value="{{item.system.weaponCrit}}">
+                        {{#select item.system.weaponCrit}}
+                        {{#each config.WeaponCrit as |name type|}}
+                        <option value="{{type}}">{{name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="infobox4">
+                    <label class="information-label" for="box4">Alcance</label>
+                    <select class="infobox" name="system.weaponRange" id="box4" value="{{item.system.weaponRange}}">
+                        {{#select item.system.weaponRange}}
+                        {{#each config.WeaponRangeTypes  as |name type|}}
+                        <option value="{{type}}">{{name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+
+                <div class="infobox5">
+                    <label class="information-label" for="box5">Descrição</label>
+                    <textarea class="infoInput infobox" name="system.itemDescription" id="box5">{{item.system.itemDescription}}</textarea>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-container" id="ammunition" data-tab-content>
+            <div class="tab-title">Munição</div>
+        </div>
+
+        <div class="tab-container" id="modifications" data-tab-content>
+            <div class="tab-title">Modificações</div>
+        </div>
+    </div>
+</form>

@@ -1,16 +1,26 @@
 {
     "Actor":{},
     "Item":{
-        "types":[
-            "Armas",
-            "Acessórios"
-        ],
-        "Armas":{
-            "Tipo de Proficiência":"",
-            "Tipo de ataque":"",
-            "Empunhadura":""
+        "types":["armas","acessorios"],
+        "templates":{
+            "itemBase":{
+                "itemDescription":"",
+                "itemSpace":"0",
+                "itemCategory": "Categoria: 0"
+            }
         },
-        "Acessórios":{
+        "armas":{
+            "templates": ["itemBase"],
+            "weaponDamageType":"Corte",
+            "weaponType":"Simples",
+            "weaponHilt":"Leve",
+            "weaponAgileStrong":"-",
+            "weaponDamage":"2d6",
+            "weaponThreat":"18",
+            "weaponCrit":"x2",
+            "weaponRange":"Fogo"
+        },
+        "acessorios":{
             "a":""
         }
     }

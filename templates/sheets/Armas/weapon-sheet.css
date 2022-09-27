@@ -6,6 +6,7 @@
     align-items: center;
     column-gap: 2px;
     width: 100%;
+    margin-bottom: 10px;
 }
 .headerbox1{grid-column: 1/1;grid-row: 1/3;}
 .headerbox2{grid-column: 2/6;}
@@ -18,11 +19,40 @@
 .headerbox9{grid-column: 7;}
 /* Header Grid End */
 
+.horizontal-divisor{
+    height: 1px;
+    background-color: #111;
+}
+
+.tabs{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.tab-flex-item{
+    flex: 1;
+    margin: 5px;
+    background: rgba(75, 74, 68, 0.2);
+    font-size: inherit;
+    font-family: inherit;
+    height: 70%;
+}
+
+.tab-flex-item:hover{background: rgba(75, 74, 68, 0.5);}
+.tab-flex-item.active{background: rgba(75, 74, 68, 0.4);}
+
+/*tabs*/
+[data-tab-content]{display:none;}
+.active[data-tab-content]{display: grid;}
+/*tabs*/
+
 /* Information Grid Start */
 .information-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-auto-rows: 100px;
+    grid-auto-rows: 65px;
     align-items: center;
     column-gap: 2px;
     width: 100%;
@@ -31,8 +61,38 @@
 .infobox2{grid-column: 2;}
 .infobox3{grid-column: 3;}
 .infobox4{grid-column: 4;}
+.infobox5{grid-column: 1/5;}
 /* Information Grid End */
 
 .infobox{
     width: 100%;
+}
+
+.infobox label{
+    text-align: center;
+    text-overflow: ellipsis;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.infoInput{
+    height: calc(var(--form-field-height) + 1px);
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border-light-tertiary);
+    border-radius: 3px;
+    padding: 0 3px;
+    text-overflow: ellipsis;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.tab-title{
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: 1px solid rgb(66, 66, 66, 0.5);
+}
+
+.tab-container{
+    margin-top: 10px;
 }
