@@ -19,35 +19,6 @@
 .headerbox9{grid-column: 7;}
 /* Header Grid End */
 
-.horizontal-divisor{
-    height: 1px;
-    background-color: #111;
-}
-
-.tabs{
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-}
-
-.tab-flex-item{
-    flex: 1;
-    margin: 5px;
-    background: rgba(75, 74, 68, 0.2);
-    font-size: inherit;
-    font-family: inherit;
-    height: 70%;
-}
-
-.tab-flex-item:hover{background: rgba(75, 74, 68, 0.5);}
-.tab-flex-item.active{background: rgba(75, 74, 68, 0.4);}
-
-/*tabs*/
-[data-tab-content]{display:none;}
-.active[data-tab-content]{display: grid;}
-/*tabs*/
-
 /* Information Grid Start */
 .information-container{
     display: grid;

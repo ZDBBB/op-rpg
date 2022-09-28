@@ -1,6 +1,6 @@
 export default class OPItemSheet extends ItemSheet {
     get template(){
-        return `systems/op-rpg/templates/sheets/${this.item.type}/${this.item.type}-sheet.hbs`
+        return `systems/op-rpg/templates/sheets/${this.item.type}/${this.item.type}-sheet.hbs`;
     }
 
     getData(){

@@ -266,7 +266,7 @@
                 },
                 "Vontade":{
                     "name":"Vontade",
-                    "relatedAttribute":"Pre",
+                    "relatedAttribute":"PRE",
                     "trainedOnly":false,
                     "loadPenality":false,
                     "trainmentType":"Destreinado",
@@ -275,8 +275,9 @@
                 }
             },
             "origem":"",
-            "classe":"",
+            "classe":"Ocultista",
             "NEX":"",
+            "jogador":"",
             "PE":{
                 "value":1,
                 "max":1

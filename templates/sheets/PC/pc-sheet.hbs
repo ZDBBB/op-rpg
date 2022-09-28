@@ -1,7 +1,106 @@
-<link rel="stylesheet" href="systems/op-rpg/templates/sheets/PC/pc-sheet.css">
+<link rel="stylesheet" href="systems/op-rpg/templates/sheets/pc/pc-sheet.css">
 <link rel="stylesheet" href="systems/op-rpg/templates/sheets/tabs.css">
 <script src="systems/op-rpg/templates/sheets/tabs.js" defer></script>
 <form class="{{cssClass}}" autocomplete="off">
-PC
-<label>{{actor.name}}</label>
+    <div class="flex-container">
+        <div class="w40pc h40px">
+            <div class="inputBox borderTop" contenteditable="true">
+                <span data-edit="name">{{actor.name}}</span>
+            </div>
+            <label class="titleBox">Nome do Personagem</label>
+        </div>
+
+        <div class="w12pc h40px">
+            <div class="inputBox" contenteditable="true">
+                <span data-edit="system.origem">{{actor.system.origem}}</span>
+            </div>
+            <label class="titleBox">Origem</label>
+        </div>
+
+        <div class="w12pc h40px">
+            <div class="inputBox" contenteditable="true">
+                <span data-edit="system.classe">{{actor.system.classe}}</span>
+            </div>
+            <label class="titleBox">Classe</label>
+        </div>
+
+        <div class="w4pc h40px">
+            <div class="inputBox" contenteditable="true">
+                <span data-edit="system.NEX">{{actor.system.NEX}}</span>
+            </div>
+            <label class="titleBox">Nex%</label>
+        </div>
+
+        <div class="w20pc h40px">
+            <div class="inputBox" contenteditable="true">
+                <span data-edit="system.jogador">{{actor.system.jogador}}</span>
+            </div>
+            <label class="titleBox">Jogador</label>
+        </div>
+    </div>
+    <div class="horizontal-divisor"></div>
+        <div class="tabs">
+        <a class="tab-flex-item active" data-tab-target="#attributes">Atributos</a>
+        <a class="tab-flex-item" data-tab-target="#equipment">Equipamento</a>
+        <a class="tab-flex-item" data-tab-target="#rituals">Rituais</a>
+    </div>
+    <div class="horizontal-divisor"></div>
+    <div class="tab-container active" id="attributes" data-tab-content>
+        <div class="attributesGrid">
+            <div class="attributesC1">
+                Geral
+            </div>
+            <div class="attributesC2">
+                Recursos
+            </div>
+            <div class="attributesC3">
+                <div class="detailTitle">Perícias</div>
+                    <label class="attributeTitleBox w34pc">Perícia</label>
+                    <label class="attributeTitleBox w12pc center">Att</label>
+                    <label class="attributeTitleBox w12pc center">Bonus</label>
+                    <label class="attributeTitleBox w22pc">Treino</label>
+                    <label class="attributeTitleBox w10pc center">Mod</label>
+
+                {{#each actor.system.skills as |skill|}}
+                    <a class="rollAttribute" data-skill-name="{{skill.name}}" data-att-related="{{skill.relatedAttribute}}" data-att-Tbonus="{{skill.trainmentBonus}}" data-att-Obonus="{{skill.otherBonuses}}">
+                        <div class="attributeInfoBox w34pc">
+                            <div class="w100pc">
+                                {{skill.name}}
+                                {{#if (eq skill.trainedOnly true)}}
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                {{/if}}
+                                {{#if (eq skill.loadPenality true)}}
+                                    <i class="fa-sharp fa-solid fa-weight-hanging" title="Penalidade de carga"></i>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </a>
+                    <div class="attributeInfoBox w12pc">
+                        <div class="w100pc center">
+                            {{skill.relatedAttribute}}
+                        </div>
+                    </div>
+                    <div class="attributeInfoBox w12pc">
+                        <div class="w100pc center">
+                            +{{skill.trainmentBonus}}
+                        </div>
+                    </div>
+                    <div class="attributeInfoBox w22pc">
+                        <div class="w100pc">
+                            {{skill.trainmentType}}
+                        </div>
+                    </div>
+                    <div class="attributeInfoBox w10pc">
+                        <div class="w100pc center">
+                            {{skill.otherBonuses}}
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-container" id="equipment" data-tab-content>erquip</div>
+    <div class="tab-container" id="rituals" data-tab-content>mritia</div>
+
 </form>

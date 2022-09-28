@@ -1,4 +1,30 @@
-/*tabs*/
 [data-tab-content]{display:none;}
 .active[data-tab-content]{display: grid;}
-/*tabs*/
+
+.tabs{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tab-flex-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin: 5px;
+    background: rgba(75, 74, 68, 0.2);
+    font-size: 18px;
+    font-family: inherit;
+    height: 70%;
+    width: 100%;
+}
+
+.tab-flex-item:hover{background: rgba(75, 74, 68, 0.5);}
+.tab-flex-item.active{background: rgba(75, 74, 68, 0.4);}
+
+.horizontal-divisor{
+    height: 1px;
+    background-color: #111;
+}
