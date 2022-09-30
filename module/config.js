@@ -59,3 +59,9 @@ op_rpg.ItemSpace = {
     S3: 3,
     S4: 4    
 }
+
+op_rpg.Classes = {
+    combatente: "Combatente",
+    especialista: "Especialista",
+    ocultista: "Ocultista"
+}

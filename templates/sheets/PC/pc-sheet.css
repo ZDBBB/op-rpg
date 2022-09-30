@@ -20,37 +20,74 @@
 .flex-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     width: 100%;
     margin-bottom: 10px;
 }
+.space-between{
+    justify-content: space-between;
+}
+.space-around{
+    justify-content: space-around;
+}
+.justify-center{
+    justify-content: center;
+}
+.flex-nowrap{
+    flex-flow: nowrap;
+}
+.flex-wrap{
+    flex-flow: wrap;
+}
 
 .w100pc{width: 100%;}
+.w105px{width:105px;}
+.w80pc{width: 80%;}
+.w50pc{width: 50%;}
 .w40pc{width: 40%;}
+.w35pc{width: 35%;}
 .w34pc{width: 34%;}
 .w30pc{width: 30%;}
 .w25pc{width: 25%;}
 .w22pc{width: 22%;}
 .w20pc{width: 20%;}
+.w15pc{width: 15%;}
 .w12pc{width: 14%;}
 .w10pc{width: 10%;}
 .w7pc{width: 7%;}
 .w5pc{width: 5%;}
 .w4pc{width: 4%;}
+.w170px{width: 170px;}
+.w75px{width: 75px;}
+.w20px{width: 20px;}
+
 .h40px{height: 40px;}
 
 .attributesGrid{
     display: grid;
     justify-content: space-between;
-    grid-template-columns: 35% 25% 40%;
-    grid-auto-rows: auto;
+    grid-template-columns: 30% 30% 40%;
+    grid-auto-rows: minmax(80px, 500px);
     align-self: center;
     width: 100%;
     height: 100px;
 }
-.attributesC1{grid-column: 1;}
-.attributesC2{grid-column: 2;}
-.attributesC3{grid-column: 3;}
+.attributesC1{
+    grid-column: 1/3;
+    grid-row: 1;
+}
+.attributesC2{
+    grid-column: 1;
+    grid-row: 2;
+}
+.attributesC3{
+    grid-column: 2;
+    grid-row: 2;
+}
+.attributesC4{
+    grid-column: 3;
+    grid-row: 1/3;
+}
+.attributesContainer{margin: 0 10px 0 10px;}
 
 .attributeTitleBox{
     font-size: 10px;  
@@ -59,7 +96,6 @@
 }
 .attributeInfoBox{
     font-size: 12px;
-    float: left;
 }
 
 .attributesFlex{
@@ -74,5 +110,67 @@
     font-size: 17px;
     border-bottom: 1px solid #111;
     text-align: center;
-    margin-bottom: 5px;
+    margin: 5px 0 5px 0;
+}
+input{
+    background-color: transparent;
+    font-size: 12px;
+    border: none;
+    font-family: inherit;
+}
+
+.tomato{
+    background-color: tomato;
+}
+
+.attributeborder{
+    border: 2px solid darkgray;
+    border-radius: 5px;
+}
+.attributeTopLine{
+    border-top: 2px solid darkgray;
+}
+.noMargin{
+    margin: 0;
+}
+
+.borderRecursos{
+    border: 2px solid darkgray;
+    border-radius: 5px;
+}
+.recursosBotLine{
+    border-bottom: 2px solid darkgray;
+}
+.fontsize10px{
+    font-size: 10px;
+}
+.resourceTitleBox{
+    height: 40%;
+    float:left;
+    font-size: 14px;
+}
+.resourceInputBox{
+    height: 60%; 
+    display: flex;
+    align-items: center;
+    margin: 0 5px 0 5px;
+}
+.resourceBotLine{
+    margin-top: 5px;
+    border-bottom: 1px solid #111;
+    font-size: 14px;
+}
+.resourceTopLine{
+    width: 95%;
+    font-size: 12px;
+    border-top: 1px solid #111;
+}
+.right{
+    float: right;
+}
+select{
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    height: auto;
 }

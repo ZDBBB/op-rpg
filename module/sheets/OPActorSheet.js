@@ -15,6 +15,7 @@ export default class OPActorSheet extends ActorSheet {
 
     activateListeners(html){
         html.find(".rollAttribute").click(this._onAttributeRoll.bind(this));
+        html.find(".attribute-inline-edit").change(this._onattributeEdit.bind(this));
 
         super.activateListeners(html);
     }
@@ -23,15 +24,32 @@ export default class OPActorSheet extends ActorSheet {
         event.preventDefault();
         let element = event.currentTarget;
 
-        let skillName = element.dataset.skillName;
-        let rollAttribute = element.dataset.attRelated;
-        let trainmentBonus = element.dataset.attTbonus;
-        let otherBonuses = element.dataset.attOBonus;
-
         await Dice.SkillCheck({ 
-            skillName: skillName, actorData: this.actor.system      
+            skillName: element.dataset.skillName, actorData: this.actor.system      
         });
     }
-    
 
+    _onattributeEdit(event){
+        event.preventDefault();
+        let element = event.currentTarget;
+        let skillName = element.dataset.skillName;
+        let field = element.dataset.field;
+
+        console.log(event.target.value);
+
+        if (field == 'trainmentType') {
+            let auxTrainment = event.target.value;
+            this.actor.system.skills[skillName].trainmentType = auxTrainment;
+
+            if (auxTrainment == 'untrained') this.actor.system.skills[skillName].trainmentBonus = 0;
+            else if (auxTrainment == 'trained') this.actor.system.skills[skillName].trainmentBonus = 5;
+            else if (auxTrainment == 'veteran') this.actor.system.skills[skillName].trainmentBonus = 10;
+            else if (auxTrainment == 'expert') this.actor.system.skills[skillName].trainmentBonus = 15;
+        }
+        else if(field == 'otherBonuses') {
+            this.actor.system.skills[skillName].otherBonuses = event.target.value;
+        }
+
+        this.actor.update({ "system.skills": this.actor.system.skills });
+    }
 }

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="systems/op-rpg/templates/sheets/tabs.css">
 <script src="systems/op-rpg/templates/sheets/tabs.js" defer></script>
 <form class="{{cssClass}}" autocomplete="off">
-    <div class="flex-container">
+    <div class="flex-container flex-nowrap space-between">
         <div class="w40pc h40px">
             <div class="inputBox borderTop" contenteditable="true">
                 <span data-edit="name">{{actor.name}}</span>
@@ -18,9 +18,13 @@
         </div>
 
         <div class="w12pc h40px">
-            <div class="inputBox" contenteditable="true">
-                <span data-edit="system.classe">{{actor.system.classe}}</span>
-            </div>
+            <select class="inputBox w100pc" name="system.classe" value="{{item.system.classe}}">
+                {{#select item.system.classe}}
+                {{#each config.Classes  as |name type|}}
+                <option value="{{type}}">{{name}}</option>
+                {{/each}}
+                {{/select}}
+            </select>
             <label class="titleBox">Classe</label>
         </div>
 
@@ -47,52 +51,208 @@
     <div class="horizontal-divisor"></div>
     <div class="tab-container active" id="attributes" data-tab-content>
         <div class="attributesGrid">
-            <div class="attributesC1">
-                Geral
+            <div class="attributesContainer attributesC1">
+                <div class="detailTitle">Atributos</div>
+                <div class="flex-container flex-nowrap space-between">
+                    <div class="w75px h40px center attributeborder">
+                        <div class="inputBox justify-center" contenteditable="true">
+                            <span data-edit="system.attributes.FOR">{{actor.system.attributes.FOR}}</span>
+                        </div>
+                        <label class="titleBox attributeTopLine">Força</label>
+                    </div>
+
+                    <div class="w75px h40px center attributeborder">
+                        <div class="inputBox justify-center " contenteditable="true">
+                            <span data-edit="system.attributes.AGI">{{actor.system.attributes.AGI}}</span>
+                        </div>
+                        <label class="titleBox  attributeTopLine">Agilidade</label>
+                    </div>
+
+                    <div class="w75px h40px center attributeborder">
+                        <div class="inputBox justify-center" contenteditable="true">
+                            <span data-edit="system.attributes.INT">{{actor.system.attributes.INT}}</span>
+                        </div>
+                        <label class="titleBox  attributeTopLine">Intelecto</label>
+                    </div>
+
+                    <div class="w75px h40px center attributeborder">
+                        <div class="inputBox justify-center" contenteditable="true">
+                            <span data-edit="system.attributes.PRE">{{actor.system.attributes.PRE}}</span>
+                        </div>
+                        <label class="titleBox  attributeTopLine">Presença</label>
+                    </div>
+
+                    <div class="w75px h40px center attributeborder">
+                        <div class="inputBox justify-center" contenteditable="true">
+                            <span data-edit="system.attributes.VIG">{{actor.system.attributes.VIG}}</span>
+                        </div>
+                        <label class="titleBox  attributeTopLine">Vigor</label>
+                    </div>
+                </div>
             </div>
-            <div class="attributesC2">
-                Recursos
+            <div class="attributesContainer attributesC2">
+                <div class="detailTitle">Defesas</div>
+                <div class="flex-container flex-nowrap space-between">
+                    <div class="w75px h40px center attributeborder">
+                        <div class="inputBox justify-center" contenteditable="true">
+                            <span data-edit="system.Defense">{{actor.system.Defense}}</span>
+                        </div>
+                        <label class="titleBox  attributeTopLine">Defesa Base</label>
+                    </div>
+
+                    <div class="w75px h40px center attributeborder">
+                        <div class="inputBox justify-center" contenteditable="true">
+                            <span data-edit="system.dodge">{{actor.system.dodge}}</span>
+                        </div>
+                        <label class="titleBox  attributeTopLine">Esquiva</label>
+                    </div>
+
+                    <div class="w75px h40px center attributeborder">
+                        <div class="inputBox justify-center" contenteditable="true">
+                            <span data-edit="system.block">{{actor.system.block}}</span>
+                        </div>
+                        <label class="titleBox  attributeTopLine">Bloqueio</label>
+                    </div>
+                </div>
+                <div class="flex-container flex-wrap space-between">
+                    <div class="w100pc h40px">
+                        <div class="inputBox" contenteditable="true">
+                            <span data-edit="system.resistances">{{actor.system.resistances}}</span>
+                        </div>
+                        <label class="titleBox">Resistências</label>
+                    </div>
+                    <div class="w100pc h40px">
+                        <div class="inputBox" contenteditable="true">
+                            <span data-edit="system.vulnerabilities">{{actor.system.vulnerabilities}}</span>
+                        </div>
+                        <label class="titleBox">Vulnerabilidades</label>
+                    </div>
+                </div>                
             </div>
-            <div class="attributesC3">
+
+            <div class="attributesContainer attributesC3">
+                <div class="borderRecursos">
+                    <div class="detailTitle recursosBotLine">Recursos</div>
+                    <div class="flex-container flex-wrap justify-center">
+                        <label class="w80pc resourceTitleBox center resourceBotLine">Vida</label>
+                        <div class="w35pc h40px center">
+                            <div class="resourceInputBox justify-center" contenteditable="true">
+                                <span data-edit="system.PV.value">{{actor.system.PV.value}}</span>
+                            </div>
+                            <label class="resourceTitleBox resourceTopLine">Atual</label>
+                        </div>
+
+                        <div class="w35pc h40px center">
+                            <div class="resourceInputBox justify-center" contenteditable="true">
+                                <span data-edit="system.PV.max">{{actor.system.PV.max}}</span>
+                            </div>
+                            <label class="resourceTitleBox resourceTopLine">Total</label>
+                        </div>
+
+                        <div class="w10pc h40px center">
+                            <div class="resourceInputBox justify-center fontsize10px" contenteditable="true">
+                                <span data-edit="system.PV.mod">{{actor.system.PV.mod}}</span>
+                            </div>
+                            <label class="resourceTitleBox fontsize10px resourceTopLine">Mod</label>
+                        </div>
+
+                        <label class="w80pc resourceTitleBox resourceBotLine center">Sanidade</label>
+                        <div class="w35pc h40px center">
+                            <div class="resourceInputBox justify-center" contenteditable="true">
+                                <span data-edit="system.SAN.value">{{actor.system.SAN.value}}</span>
+                            </div>
+                            <label class="resourceTitleBox resourceTopLine">Atual</label>
+                        </div>
+
+                        <div class="w35pc h40px center">
+                            <div class="resourceInputBox justify-center" contenteditable="true">
+                                <span data-edit="system.SAN.max">{{actor.system.SAN.max}}</span>
+                            </div>
+                            <label class="resourceTitleBox resourceTopLine">Total</label>
+                        </div>
+
+                        <div class="w10pc h40px center">
+                            <div class="resourceInputBox justify-center fontsize10px" contenteditable="true">
+                                <span data-edit="system.SAN.mod">{{actor.system.SAN.mod}}</span>
+                            </div>
+                            <label class="resourceTitleBox fontsize10px resourceTopLine">Mod</label>
+                        </div>
+
+                        <label class="w80pc resourceTitleBox resourceBotLine center">Esforço 
+                            <div class="right">
+                                MAX/rod: 
+                                <span data-edit="system.SAN.rod" contenteditable="true">{{actor.system.PE.rod}}</span>
+                            </div>
+                        </label>
+                        <div class="w35pc h40px center">
+                            <div class="resourceInputBox justify-center" contenteditable="true">
+                                <span data-edit="system.PE.value">{{actor.system.PE.value}}</span>
+                            </div>
+                            <label class="resourceTitleBox resourceTopLine">Atual</label>
+                        </div>
+
+                        <div class="w35pc h40px center">
+                            <div class="resourceInputBox justify-center" contenteditable="true">
+                                <span data-edit="system.PE.max">{{actor.system.PE.max}}</span>
+                            </div>
+                            <label class="resourceTitleBox resourceTopLine">Total</label>
+                        </div>
+
+                        <div class="w10pc h40px center">
+                            <div class="resourceInputBox justify-center fontsize10px" contenteditable="true">
+                                <span data-edit="system.PE.mod">{{actor.system.PE.mod}}</span>
+                            </div>
+                            <label class="resourceTitleBox fontsize10px resourceTopLine">Mod</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="attributesContainer attributesC4">
                 <div class="detailTitle">Perícias</div>
-                    <label class="attributeTitleBox w34pc">Perícia</label>
-                    <label class="attributeTitleBox w12pc center">Att</label>
-                    <label class="attributeTitleBox w12pc center">Bonus</label>
-                    <label class="attributeTitleBox w22pc">Treino</label>
-                    <label class="attributeTitleBox w10pc center">Mod</label>
+                
+                    <div class="flex-container flex-nowrap space-between noMargin">
+                        <label class="attributeTitleBox w105px">Perícia</label>
+                        <label class="attributeTitleBox w12pc center">Att</label>
+                        <label class="attributeTitleBox w12pc center">Bonus</label>
+                        <label class="attributeTitleBox w22pc">Treino</label>
+                        <label class="attributeTitleBox w10pc center">Mod</label>
+                    </div>
 
                 {{#each actor.system.skills as |skill|}}
-                    <a class="rollAttribute" data-skill-name="{{skill.name}}" data-att-related="{{skill.relatedAttribute}}" data-att-Tbonus="{{skill.trainmentBonus}}" data-att-Obonus="{{skill.otherBonuses}}">
-                        <div class="attributeInfoBox w34pc">
-                            <div class="w100pc">
-                                {{skill.name}}
-                                {{#if (eq skill.trainedOnly true)}}
-                                    <i class="fa-solid fa-graduation-cap"></i>
-                                {{/if}}
-                                {{#if (eq skill.loadPenality true)}}
-                                    <i class="fa-sharp fa-solid fa-weight-hanging" title="Penalidade de carga"></i>
-                                {{/if}}
+                    <div class="flex-container flex-nowrap space-between noMargin">
+                        <a class="rollAttribute attribute" data-skill-name="{{skill.unformatedName}}">
+                            <div class="attributeInfoBox w105px">
+                                <div class="w100pc">
+                                    {{skill.name}}
+                                    {{#if (eq skill.trainedOnly true)}}
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                    {{/if}}
+                                    {{#if (eq skill.loadPenality true)}}
+                                        <i class="fa-sharp fa-solid fa-weight-hanging" title="Penalidade de carga"></i>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </a>
+                        <div class="attributeInfoBox w12pc">
+                            <div class="center w100pc">
+                                {{skill.relatedAttribute}}
                             </div>
                         </div>
-                    </a>
-                    <div class="attributeInfoBox w12pc">
-                        <div class="w100pc center">
-                            {{skill.relatedAttribute}}
+                        <div class="attributeInfoBox w12pc">
+                            <div class="center w100pc">
+                                +{{skill.trainmentBonus}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="attributeInfoBox w12pc">
-                        <div class="w100pc center">
-                            +{{skill.trainmentBonus}}
+                        <div class="attributeInfoBox w22pc">
+                            <select class="attribute-inline-edit w100pc" data-field="trainmentType" data-skill-name="{{skill.unformatedName}}" value="{{skill.trainmentType}}">
+                                <option value="untrained" {{#if (eq skill.trainmentType "untrained")}} selected {{/if}}>----------</option>
+                                <option value="trained" {{#if (eq skill.trainmentType "trained")}} selected {{/if}}>Treinado</option>
+                                <option value="veteran" {{#if (eq skill.trainmentType "veteran")}} selected {{/if}}>Veterano</option>
+                                <option value="expert" {{#if (eq skill.trainmentType "expert")}} selected {{/if}}>Expert</option>
+                            </select>
                         </div>
-                    </div>
-                    <div class="attributeInfoBox w22pc">
-                        <div class="w100pc">
-                            {{skill.trainmentType}}
-                        </div>
-                    </div>
-                    <div class="attributeInfoBox w10pc">
-                        <div class="w100pc center">
-                            {{skill.otherBonuses}}
+                        <div class="attributeInfoBox w10pc">
+                            <input class="center attribute-inline-edit w100pc" data-field="otherBonuses" data-skill-name="{{skill.unformatedName}}" contenteditable="true" value="{{skill.otherBonuses}}">
                         </div>
                     </div>
                 {{/each}}

@@ -3,39 +3,44 @@ export async function SkillCheck({
     actorData = null,
     advantage = 0
 }){
-    console.log('s', skillName);
-    console.log('a', actorData);
-    let attributeValue = 2;
-    let trainmentBonus = 5;
-    let otherBonuses = 0;
-    //Debug all this function
-    let loadDisavantage = calculateLoadDisavantage(actorData);
+    let messageData = {
+        user: game.user._id,
+        speaker: ChatMessage.getSpeaker()
+    }
+    
+    let skill = actorData.skills[skillName];
+    
+    if (skill.trainedOnly && skill.trainmentBonus == 0){
+        messageData.content = `'${actorData.subNome}' não é treinado em '${skillName}'. Falha automática no teste`;
+        ChatMessage.create(messageData);
+        return;
+    }
 
+    let attributeValue = parseInt(actorData.attributes[skill.relatedAttribute]);
+    let trainmentBonus = parseInt(skill.trainmentBonus);
+    let otherBonuses = parseInt(skill.otherBonuses);
+    let loadDisavantage = calculateLoadDisavantage(actorData, skill);
     let finalDiceNumber = attributeValue + advantage;
     let finalBonus = trainmentBonus + otherBonuses + loadDisavantage;
     let rollForumula = `${finalDiceNumber}d20kh + ${finalBonus}`;
     
-    
     let r = new Roll(rollForumula);
-    
-    await r.evaluate({async: true});
-    
-    let messageData = {
-        speaker: ChatMessage.getSpeaker()
-    }
+    await r.evaluate({async: false});
 
-    console.log(r.total, r.result);
+    await r.toMessage(messageData);
 }
 
-function calculateLoadDisavantage(actorData){
-    let loadDisavantage = 0;
+function calculateLoadDisavantage(actorData, skill){
     if (actorData.load.value < 0) actorData.load.value = 0;
-        if (actorData.type == "PC"){
+    if (skill.loadPenality == false) return 0;
 
+    let loadDisavantage = 0;
+    //if is pc.vv
+    if (actorData.skills != undefined) {
             if (actorData.load.value > 0){
                 let loadDisavantageValue = Math.floor(actorData.load.max / 2);
 
-                if (actorData.load.value > loadDisavantageValue){
+                if (actorData.load.value >= loadDisavantageValue){
                     loadDisavantage = -5;
                 }
             }

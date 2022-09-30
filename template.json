@@ -3,6 +3,7 @@
         "types":["PC","Criatura"],
         "templates":{
             "commonStats":{
+                "subNome":"Novo ator",
                 "attributes":{
                     "AGI":1,
                     "FOR":1,
@@ -12,10 +13,13 @@
                 },
                 "PV":{
                     "value":10,
-                    "max":10
+                    "max":10,
+                    "mod":0
                 },
                 "Defense":10,
-                "Movement":"9m"
+                "Movement":"9m",
+                "resistances": null,
+                "vulnerabilities": null
             }
         },
         "PC":{
@@ -23,6 +27,7 @@
             "skills":{
                 "Acrobacia":{
                     "name":"Acrobacia",
+                    "unformatedName":"Acrobacia",
                     "relatedAttribute":"AGI",
                     "trainedOnly":false,
                     "loadPenality":true,
@@ -32,6 +37,7 @@
                 },
                 "Adestramento":{
                     "name":"Adestramento",
+                    "unformatedName":"Adestramento",
                     "relatedAttribute":"PRE",
                     "trainedOnly":true,
                     "loadPenality":false,
@@ -41,6 +47,7 @@
                 },
                 "Artes":{
                     "name":"Artes",
+                    "unformatedName":"Artes",
                     "relatedAttribute":"PRE",
                     "trainedOnly":true,
                     "loadPenality":false,
@@ -50,6 +57,7 @@
                 },
                 "Atletismo":{
                     "name":"Atletismo",
+                    "unformatedName":"Atletismo",
                     "relatedAttribute":"FOR",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -59,6 +67,7 @@
                 },
                 "Atualidades":{
                     "name":"Atualidades",
+                    "unformatedName":"Atualidades",
                     "relatedAttribute":"INT",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -68,6 +77,7 @@
                 },
                 "Ciencias":{
                     "name":"Ciências",
+                    "unformatedName":"Ciencias",
                     "relatedAttribute":"INT",
                     "trainedOnly":true,
                     "loadPenality":false,
@@ -77,6 +87,7 @@
                 },
                 "Crime":{
                     "name":"Crime",
+                    "unformatedName":"Crime",
                     "relatedAttribute":"AGI",
                     "trainedOnly":true,
                     "loadPenality":true,
@@ -86,6 +97,7 @@
                 },
                 "Diplomacia":{
                     "name":"Diplomacia",
+                    "unformatedName":"Diplomacia",
                     "relatedAttribute":"PRE",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -95,6 +107,7 @@
                 },
                 "Enganacao":{
                     "name":"Enganação",
+                    "unformatedName":"Enganacao",
                     "relatedAttribute":"PRE",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -104,6 +117,7 @@
                 },
                 "Fortitude":{
                     "name":"Fortitude",
+                    "unformatedName":"Fortitude",
                     "relatedAttribute":"VIG",
                     "trainedOnly":false,
                     "loadPenality":true,
@@ -113,6 +127,7 @@
                 },
                 "Furtividade":{
                     "name":"Furtividade",
+                    "unformatedName":"Furtividade",
                     "relatedAttribute":"AGI",
                     "trainedOnly":false,
                     "loadPenality":true,
@@ -122,6 +137,7 @@
                 },
                 "Iniciativa":{
                     "name":"Iniciativa",
+                    "unformatedName":"Iniciativa",
                     "relatedAttribute":"AGI",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -131,6 +147,7 @@
                 },
                 "Intimidacao":{
                     "name":"Intimidação",
+                    "unformatedName":"Intimidacao",
                     "relatedAttribute":"PRE",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -140,6 +157,7 @@
                 },
                 "Intuicao":{
                     "name":"Intuição",
+                    "unformatedName":"Intuicao",
                     "relatedAttribute":"PRE",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -149,6 +167,7 @@
                 },
                 "Investigacao":{
                     "name":"Investigação",
+                    "unformatedName":"Investigacao",
                     "relatedAttribute":"INT",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -158,6 +177,7 @@
                 },
                 "Luta":{
                     "name":"Luta",
+                    "unformatedName":"Luta",
                     "relatedAttribute":"FOR",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -167,6 +187,7 @@
                 },
                 "Medicina":{
                     "name":"Medicina",
+                    "unformatedName":"Medicina",
                     "relatedAttribute":"INT",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -176,6 +197,7 @@
                 },
                 "Ocultismo":{
                     "name":"Ocultismo",
+                    "unformatedName":"Ocultismo",
                     "relatedAttribute":"INT",
                     "trainedOnly":true,
                     "loadPenality":false,
@@ -185,6 +207,7 @@
                 },
                 "Percepcao":{
                     "name":"Percepção",
+                    "unformatedName":"Percepcao",
                     "relatedAttribute":"PRE",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -194,6 +217,7 @@
                 },
                 "Pilotagem":{
                     "name":"Pilotagem",
+                    "unformatedName":"Pilotagem",
                     "relatedAttribute":"AGI",
                     "trainedOnly":true,
                     "loadPenality":false,
@@ -203,6 +227,7 @@
                 },
                 "Pontaria":{
                     "name":"Pontaria",
+                    "unformatedName":"Pontaria",
                     "relatedAttribute":"AGI",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -212,6 +237,7 @@
                 },
                 "Profissao":{
                     "name":"Profissão",
+                    "unformatedName":"Profissao",
                     "relatedAttribute":"INT",
                     "trainedOnly":true,
                     "loadPenality":false,
@@ -221,6 +247,7 @@
                 },
                 "Reflexos":{
                     "name":"Reflexos",
+                    "unformatedName":"Reflexos",
                     "relatedAttribute":"AGI",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -230,6 +257,7 @@
                 },
                 "Religiao":{
                     "name":"Religião",
+                    "unformatedName":"Religiao",
                     "relatedAttribute":"PRE",
                     "trainedOnly":true,
                     "loadPenality":false,
@@ -239,6 +267,7 @@
                 },
                 "Sobrevivencia":{
                     "name":"Sobrevivência",
+                    "unformatedName":"Sobrevivencia",
                     "relatedAttribute":"INT",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -248,6 +277,7 @@
                 },
                 "Tatica":{
                     "name":"Tática",
+                    "unformatedName":"Tatica",
                     "relatedAttribute":"INT",
                     "trainedOnly":true,
                     "loadPenality":false,
@@ -257,6 +287,7 @@
                 },
                 "Tecnologia":{
                     "name":"Tecnologia",
+                    "unformatedName":"Tecnologia",
                     "relatedAttribute":"INT",
                     "trainedOnly":true,
                     "loadPenality":false,
@@ -266,6 +297,7 @@
                 },
                 "Vontade":{
                     "name":"Vontade",
+                    "unformatedName":"Vontade",
                     "relatedAttribute":"PRE",
                     "trainedOnly":false,
                     "loadPenality":false,
@@ -274,22 +306,28 @@
                     "otherBonuses":0
                 }
             },
-            "origem":"",
+            "origem":"origem",
             "classe":"Ocultista",
-            "NEX":"",
-            "jogador":"",
+            "NEX":"0",
+            "jogador":"jogador",
             "PE":{
                 "value":1,
-                "max":1
+                "max":1,
+                "mod":0,
+                "rod":0
             },
             "SAN":{
                 "value":1,
-                "max":1
+                "max":1,
+                "mod":0
             },
             "load":{
                 "value":1,
-                "max":2
-            }
+                "max":2,
+                "mod":0
+            },
+            "block":0,
+            "dodge":0
         },
         "Criatura":{
             "templates":["commonStats"],
