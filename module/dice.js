@@ -1,14 +1,14 @@
 export async function SkillCheck({
     skillName = null,
-    actorData = null,
-    advantage = 0
+    actorData = null
 }){
     let messageData = {
         user: game.user._id,
-        speaker: ChatMessage.getSpeaker()
+        speaker: ChatMessage.getSpeaker(),
     }
     
     let skill = actorData.skills[skillName];
+    let advantage = parseInt(actorData.advantage);
     
     if (skill.trainedOnly && skill.trainmentBonus == 0){
         messageData.content = `'${actorData.subNome}' não é treinado em '${skillName}'. Falha automática no teste`;
@@ -22,7 +22,13 @@ export async function SkillCheck({
     let loadDisavantage = calculateLoadDisavantage(actorData, skill);
     let finalDiceNumber = attributeValue + advantage;
     let finalBonus = trainmentBonus + otherBonuses + loadDisavantage;
-    let rollForumula = `${finalDiceNumber}d20kh + ${finalBonus}`;
+    
+    let rollForumula
+    if (finalDiceNumber >= 0){
+        rollForumula = `${finalDiceNumber}d20kh + ${finalBonus}`;
+    }else{
+        rollForumula = "0";
+    }
     
     let r = new Roll(rollForumula);
     await r.evaluate({async: false});

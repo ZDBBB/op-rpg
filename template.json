@@ -3,7 +3,7 @@
         "types":["PC","Criatura"],
         "templates":{
             "commonStats":{
-                "subNome":"Novo ator",
+                "subNome":"---",
                 "attributes":{
                     "AGI":1,
                     "FOR":1,
@@ -24,6 +24,7 @@
         },
         "PC":{
             "templates":["commonStats"],
+            "advantage": 0,
             "skills":{
                 "Acrobacia":{
                     "name":"Acrobacia",
@@ -306,10 +307,10 @@
                     "otherBonuses":0
                 }
             },
-            "origem":"origem",
-            "classe":"Ocultista",
+            "origem":"---",
+            "classe":"---",
             "NEX":"0",
-            "jogador":"jogador",
+            "jogador":"---",
             "PE":{
                 "value":1,
                 "max":1,

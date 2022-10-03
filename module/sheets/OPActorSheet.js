@@ -15,6 +15,8 @@ export default class OPActorSheet extends ActorSheet {
 
     activateListeners(html){
         html.find(".rollAttribute").click(this._onAttributeRoll.bind(this));
+        html.find(".advantageMinus").click(this._changeAdvantageModifierMinus.bind(this));
+        html.find(".advantagePlus").click(this._changeAdvantageModifierPlus.bind(this));
         html.find(".attribute-inline-edit").change(this._onattributeEdit.bind(this));
 
         super.activateListeners(html);
@@ -27,6 +29,18 @@ export default class OPActorSheet extends ActorSheet {
         await Dice.SkillCheck({ 
             skillName: element.dataset.skillName, actorData: this.actor.system      
         });
+
+        this.actor.update({"system.advantage": 0});
+    }
+
+    _changeAdvantageModifierMinus(){
+        this.actor.system.advantage--;
+        this.actor.update({"system.advantage": this.actor.system.advantage});
+    }
+
+    _changeAdvantageModifierPlus(){
+        this.actor.system.advantage++;
+        this.actor.update({"system.advantage": this.actor.system.advantage});
     }
 
     _onattributeEdit(event){

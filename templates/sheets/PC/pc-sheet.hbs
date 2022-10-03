@@ -208,15 +208,22 @@
                 </div>
             </div>
             <div class="attributesContainer attributesC4">
-                <div class="detailTitle">Perícias</div>
                 
-                    <div class="flex-container flex-nowrap space-between noMargin">
-                        <label class="attributeTitleBox w105px">Perícia</label>
-                        <label class="attributeTitleBox w12pc center">Att</label>
-                        <label class="attributeTitleBox w12pc center">Bonus</label>
-                        <label class="attributeTitleBox w22pc">Treino</label>
-                        <label class="attributeTitleBox w10pc center">Mod</label>
-                    </div>
+                <div class="flex-container space-between align-center center">
+                <a class="advantageMinus"><i class="fas fa-chevron-left left"></i></a>
+                <span class="advantageButton">{{#if (lt actor.system.advantage 0)}}{{actor.system.advantage}}{{/if}}</span>
+                <div class="detailTitle">Perícias</div>
+                <span class="advantageButton">{{#if (gt actor.system.advantage 0)}}+{{actor.system.advantage}}{{/if}}</span>
+                <a class="advantagePlus"><i class="fas fa-chevron-right right"></i></a>
+                </div>
+
+                <div class="flex-container flex-nowrap space-between noMargin">
+                    <label class="attributeTitleBox w105px">Perícia</label>
+                    <label class="attributeTitleBox w12pc center">Att</label>
+                    <label class="attributeTitleBox w12pc center">Bonus</label>
+                    <label class="attributeTitleBox w22pc">Treino</label>
+                    <label class="attributeTitleBox w10pc center">Mod</label>
+                </div>
 
                 {{#each actor.system.skills as |skill|}}
                     <div class="flex-container flex-nowrap space-between noMargin">
