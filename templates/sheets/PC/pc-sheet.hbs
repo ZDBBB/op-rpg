@@ -18,9 +18,9 @@
         </div>
 
         <div class="w12pc h40px">
-            <select class="inputBox w100pc" name="system.classe" value="{{item.system.classe}}">
-                {{#select item.system.classe}}
-                {{#each config.Classes  as |name type|}}
+            <select class="inputBox w100pc class-auto-calculate" value="{{actor.system.classe}}">
+                {{#select actor.system.classe}}
+                {{#each config.Classes as |name type|}}
                 <option value="{{type}}">{{name}}</option>
                 {{/each}}
                 {{/select}}
@@ -30,7 +30,7 @@
 
         <div class="w4pc h40px">
             <div class="inputBox" contenteditable="true">
-                <span data-edit="system.NEX">{{actor.system.NEX}}</span>
+                <input name="system.NEX" class="level-auto-calculate" value="{{actor.system.NEX}}">
             </div>
             <label class="titleBox">Nex%</label>
         </div>
@@ -56,37 +56,37 @@
                 <div class="flex-container flex-nowrap space-between">
                     <div class="w75px h40px center attributeborder">
                         <div class="inputBox justify-center" contenteditable="true">
-                            <span data-edit="system.attributes.FOR">{{actor.system.attributes.FOR}}</span>
+                            <input name="system.attributes.FOR" data-att="FOR" class="attribute-auto-calculate w100pc center" value="{{actor.system.attributes.FOR}}">
                         </div>
                         <label class="titleBox attributeTopLine">Força</label>
                     </div>
 
                     <div class="w75px h40px center attributeborder">
-                        <div class="inputBox justify-center " contenteditable="true">
-                            <span data-edit="system.attributes.AGI">{{actor.system.attributes.AGI}}</span>
+                        <div class="inputBox justify-center">
+                            <input name="system.attributes.AGI" data-att="AGI" class="attribute-auto-calculate w100pc center" value="{{actor.system.attributes.AGI}}">
                         </div>
-                        <label class="titleBox  attributeTopLine">Agilidade</label>
+                        <label class="titleBox attributeTopLine">Agilidade</label>
                     </div>
 
                     <div class="w75px h40px center attributeborder">
-                        <div class="inputBox justify-center" contenteditable="true">
-                            <span data-edit="system.attributes.INT">{{actor.system.attributes.INT}}</span>
+                        <div class="inputBox justify-center">
+                            <input name="system.attributes.INT" data-att="INT" class="attribute-auto-calculate w100pc center" value="{{actor.system.attributes.INT}}">
                         </div>
-                        <label class="titleBox  attributeTopLine">Intelecto</label>
+                        <label class="titleBox attributeTopLine">Intelecto</label>
                     </div>
 
                     <div class="w75px h40px center attributeborder">
-                        <div class="inputBox justify-center" contenteditable="true">
-                            <span data-edit="system.attributes.PRE">{{actor.system.attributes.PRE}}</span>
+                        <div class="inputBox justify-center">
+                            <input name="system.attributes.PRE" data-att="PRE" class="attribute-auto-calculate w100pc center" value="{{actor.system.attributes.PRE}}">
                         </div>
-                        <label class="titleBox  attributeTopLine">Presença</label>
+                        <label class="titleBox attributeTopLine">Presença</label>
                     </div>
 
                     <div class="w75px h40px center attributeborder">
-                        <div class="inputBox justify-center" contenteditable="true">
-                            <span data-edit="system.attributes.VIG">{{actor.system.attributes.VIG}}</span>
+                        <div class="inputBox justify-center">
+                            <input name="system.attributes.VIG" data-att="VIG" class="attribute-auto-calculate w100pc center" value="{{actor.system.attributes.VIG}}">
                         </div>
-                        <label class="titleBox  attributeTopLine">Vigor</label>
+                        <label class="titleBox attributeTopLine">Vigor</label>
                     </div>
                 </div>
             </div>
@@ -267,7 +267,38 @@
         </div>
     </div>
 
-    <div class="tab-container" id="equipment" data-tab-content>erquip</div>
+    <div class="tab-container" id="equipment" data-tab-content>
+        <div class="flex-container flex-wrap justify-center">
+            <label class="w95pc resourceTitleBox center resourceBotLine">Inventário</label>
+            <div class="w30pc h40px center">
+                <div class="resourceInputBox justify-center" contenteditable="true">
+                    <span data-edit="system.load.value">{{actor.system.load.value}}</span>
+                </div>
+                <label class="resourceTitleBox resourceTopLine">Espaços Usados</label>
+            </div>
+
+            <div class="w30pc h40px center">
+                <div class="resourceInputBox justify-center" contenteditable="true">
+                    <span data-edit="system.load.max">{{actor.system.load.max}}</span>
+                </div>
+                <label class="resourceTitleBox resourceTopLine">Espaços Max</label>
+            </div>
+
+            <div class="w10pc h40px center">
+                <div class="resourceInputBox justify-center fontsize10px" contenteditable="true">
+                    <span data-edit="system.load.mod">{{actor.system.load.mod}}</span>
+                </div>
+                <label class="resourceTitleBox fontsize10px resourceTopLine">Espaços Mod</label>
+            </div>
+
+            <div class="w25pc h40px center">
+                <div class="resourceInputBox justify-center" contenteditable="true">
+                    <span data-edit="system.category">{{actor.system.category}}</span>
+                </div>
+                <label class="resourceTitleBox resourceTopLine">Categoria Atual</label>
+            </div>
+        </div>
+    </div>
     <div class="tab-container" id="rituals" data-tab-content>mritia</div>
 
 </form>

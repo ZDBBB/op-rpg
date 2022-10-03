@@ -7,33 +7,34 @@ export async function SkillCheck({
         speaker: ChatMessage.getSpeaker(),
     }
     
-    let skill = actorData.skills[skillName];
-    let advantage = parseInt(actorData.advantage);
-    
+    let skill = actorData.system.skills[skillName];
     if (skill.trainedOnly && skill.trainmentBonus == 0){
-        messageData.content = `'${actorData.subNome}' não é treinado em '${skillName}'. Falha automática no teste`;
+        messageData.content = `'${actorData.name}' não é treinado em '${skillName}'. Falha automática no teste`;
         ChatMessage.create(messageData);
         return;
     }
 
-    let attributeValue = parseInt(actorData.attributes[skill.relatedAttribute]);
-    let trainmentBonus = parseInt(skill.trainmentBonus);
-    let otherBonuses = parseInt(skill.otherBonuses);
-    let loadDisavantage = calculateLoadDisavantage(actorData, skill);
-    let finalDiceNumber = attributeValue + advantage;
-    let finalBonus = trainmentBonus + otherBonuses + loadDisavantage;
-    
+    let dice = {value: 0, message: ""};
+    let flat = {value: 0, message: ""};
+
+    addDiceModifier(dice, actorData.system.attributes[skill.relatedAttribute], 'Atributo'); //Advantage on attribute.
+    addDiceModifier(dice, actorData.system.advantage, 'Vantagens'); //Advantage on sheet.
+
+    addFlatModifier(flat, skill.trainmentBonus, 'Bônus de Treinamento');
+    addFlatModifier(flat, skill.otherBonuses, 'Outros Bônus');
+    addFlatModifier(flat, calculateLoadDisavantage(actorData.system, skill), 'Desvantagem de carga');
+
     let rollForumula
-    if (finalDiceNumber >= 0){
-        rollForumula = `${finalDiceNumber}d20kh + ${finalBonus}`;
-    }else{
-        rollForumula = "0";
-    }
+    if (dice.value >= 0) rollForumula = `${dice.value}d20kh + ${flat.value}`;
+    else rollForumula = "0";
     
     let r = new Roll(rollForumula);
     await r.evaluate({async: false});
 
-    await r.toMessage(messageData);
+    let messageFlavor = '<div>' + dice.message + flat.message + '</div>';
+
+    messageData.content = await r.render({flavor: messageFlavor, template: 'systems/op-rpg/templates/chat/skill-check.hbs'});
+    ChatMessage.create(messageData);
 }
 
 function calculateLoadDisavantage(actorData, skill){
@@ -52,4 +53,30 @@ function calculateLoadDisavantage(actorData, skill){
             }
         }
     return loadDisavantage;
+}
+
+function addFlatModifier(flat, advantage, type){
+    let flatAdvantage = parseInt(advantage);
+    if (flatAdvantage == 0) return;
+
+    flat.value += flatAdvantage;
+    let signal = (flatAdvantage > 0) ? "+" : "-";
+
+    flat.message += `
+    <div style="font-size:12px;float:left;">${type}</div>
+    <div style="font-size:12px;float:right;">${signal}${flatAdvantage}</div>
+    <br>`;
+}
+
+function addDiceModifier(dice, advantage, type){
+    let diceAdvantage = parseInt(advantage);
+    if (diceAdvantage == 0) return;
+
+    dice.value += diceAdvantage;
+    let signal = (diceAdvantage > 0) ? "+" : "-";
+
+    dice.message += `
+    <div style="font-size:12px;float:left;">${type}</div>
+    <div style="font-size:12px;float:right;">${signal}${diceAdvantage}d20</div>
+    <br>`;
 }

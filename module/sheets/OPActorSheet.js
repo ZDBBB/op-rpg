@@ -18,6 +18,9 @@ export default class OPActorSheet extends ActorSheet {
         html.find(".advantageMinus").click(this._changeAdvantageModifierMinus.bind(this));
         html.find(".advantagePlus").click(this._changeAdvantageModifierPlus.bind(this));
         html.find(".attribute-inline-edit").change(this._onattributeEdit.bind(this));
+        html.find(".attribute-auto-calculate").change(this._recalculateValues.bind(this));
+        html.find(".class-auto-calculate").change(this._recalculateClass.bind(this));
+        html.find(".level-auto-calculate").change(this._recalculateLevel.bind(this));
 
         super.activateListeners(html);
     }
@@ -27,7 +30,7 @@ export default class OPActorSheet extends ActorSheet {
         let element = event.currentTarget;
 
         await Dice.SkillCheck({ 
-            skillName: element.dataset.skillName, actorData: this.actor.system      
+            skillName: element.dataset.skillName, actorData: this.actor      
         });
 
         this.actor.update({"system.advantage": 0});
@@ -49,8 +52,6 @@ export default class OPActorSheet extends ActorSheet {
         let skillName = element.dataset.skillName;
         let field = element.dataset.field;
 
-        console.log(event.target.value);
-
         if (field == 'trainmentType') {
             let auxTrainment = event.target.value;
             this.actor.system.skills[skillName].trainmentType = auxTrainment;
@@ -65,5 +66,32 @@ export default class OPActorSheet extends ActorSheet {
         }
 
         this.actor.update({ "system.skills": this.actor.system.skills });
+    }
+
+    _recalculateValues(event){
+        this._recalculateStatus();
+    }
+
+    _recalculateClass(event){
+        event.preventDefault();
+        this.actor.update({"system.classe": event.target.value });
+
+        let classSpecs = CONFIG.op_rpg.ClassCaracteristics[event.target.value];
+        let characterLevel = ~~((parseInt(this.actor.system.NEX)+1)/5);
+
+        this._recalculateStatus(classSpecs, characterLevel);
+    }
+
+    _recalculateLevel(event){
+        event.preventDefault();
+
+        let classSpecs = CONFIG.op_rpg.ClassCaracteristics[this.actor.system.classe];
+        let characterLevel = ~~((parseInt(event.target.value)+1)/5);
+
+        this._recalculateStatus(classSpecs, characterLevel);
+    }
+
+    _recalculateStatus(classSpecs, characterLevel){
+        console.log(classSpecs, characterLevel);
     }
 }

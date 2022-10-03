@@ -65,3 +65,30 @@ op_rpg.Classes = {
     especialista: "Especialista",
     ocultista: "Ocultista"
 }
+
+op_rpg.ClassCaracteristics = {
+    combatente: {
+        PVInicial: 20,
+        PVpNV: 4,
+        PEInicial: 2,
+        PVpNV: 2,
+        SANInicial: 12,
+        SANpNV: 3 
+    },
+    especialista: {
+        PVInicial: 16,
+        PVpNV: 3,
+        PEInicial: 3,
+        PVpNV: 3,
+        SANInicial: 16,
+        SANpNV: 4 
+    },
+    ocultista: {
+        PVInicial: 12,
+        PVpNV: 2,
+        PEInicial: 4,
+        PVpNV: 4,
+        SANInicial: 20,
+        SANpNV: 5 
+    },
+}

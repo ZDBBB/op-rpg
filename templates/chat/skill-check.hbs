@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="systems/op-rpg/templates/chat/skill-check.css">
+<div class="dice-roll">
+    {{#if flavor}}
+    <div class="dice-tooltip">
+        {{{flavor}}}
+    </div>
+    {{/if}}
+    <div class="dice-result">
+        <div class="dice-formula">{{formula}}</div>
+        {{{tooltip}}}
+        <h4 class="dice-total">{{total}}</h4>
+    </div>
+</div>
